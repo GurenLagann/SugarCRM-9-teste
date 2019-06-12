@@ -19,18 +19,18 @@ function job_fase_acomp_expirado()
 
 			WHERE NOW() >= DATE_SUB(contacts_cstm.dt_previsao_acompanhamento_c, INTERVAL 1 HOUR) 
 			AND	contacts_cstm.dt_previsao_acompanhamento_c IS NOT NULL 
-			AND contacts_cstm.dt_previsao_acompanhamento_c <> '0000-00-00 00:00:00' 
-			AND	contacts_cstm.lftm_fases_acompanhamento_c NOT IN ('Agendada') 
-			AND contacts_cstm.lftm_fases_acompanhamento_c NOT IN ('Expirada') 
-			AND contacts_cstm.lftm_segmentacao_cliente_c NOT IN ('Online') 
-			AND	contacts_cstm.lftm_status_cliente_c = 'Ativo' 
-			AND contacts.deleted=0;";
+			AND contacts_cstm.dt_previsao_acompanhamento_c <> ? 
+			AND	contacts_cstm.lftm_fases_acompanhamento_c NOT IN (?) 
+			AND contacts_cstm.lftm_fases_acompanhamento_c NOT IN (?) 
+			AND contacts_cstm.lftm_segmentacao_cliente_c NOT IN (?) 
+			AND	contacts_cstm.lftm_status_cliente_c = ? 
+			AND contacts.deleted=?;";
 
 	$conn = $GLOBALS['db']->getConnection();
 	
 	//$GLOBALS['log']->fatal('Got Connection');
 	
-	$stmt = $conn->executeQuery($query);
+	$stmt = $conn->executeQuery($query, array('0000-00-00 00:00:00', 'Agendada', 'Expirada', 'Online', 'Ativo', 0));
 	
 	//$GLOBALS['log']->fatal('Query executed');
 	
@@ -53,5 +53,3 @@ function job_fase_acomp_expirado()
     return true;
 
 }
-
-?>

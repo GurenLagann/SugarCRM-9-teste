@@ -7,7 +7,7 @@ $manifest = array
 	'acceptable_sugar_flavors' => array('PRO', 'CORP', 'ENT', 'ULT'),
 	'acceptable_sugar_versions' => array(
 		'exact_matches' => array(),
-		'regex_matches' => array('9*'),
+		'regex_matches' => array('11|10|9*'),
 	),
 	'author' => 'Nectar Consulting',
 	'description' => 'Altera fase de acompanhamento para Expirada',
