@@ -1,21 +1,31 @@
 <?php
 
-$manifest = array
-(
-	'key' => '20190528175600',
+$manifest = array (
+	'key' => 1397052912,
 	'name' => 'job_niver_conta',
-	'acceptable_sugar_flavors' => array('PRO', 'CORP', 'ENT', 'ULT'),
-	'acceptable_sugar_versions' => array(
-		'exact_matches' => array(),
-		'regex_matches' => array('9\\..*$'),
-	),
-	'author' => 'TI Lifetime',
-	'description' => 'Verifica se aniversario de Cliente',
-	'icon' => '',
-	'is_uninstallable' => true,
-	'published_date' => '2018-07-05 11:24:00',
-	'type' => 'module',
+	'author' => 'wallace',
 	'version' => '4.0',
+	'is_uninstallable' => true,
+	'published_date' => '19/06/2019 18:02:55',
+	'type' => 'module',
+	'acceptable_sugar_versions' => array(
+	  'exact_matches' => array(
+		  '9.0.0'
+	  ),
+	  //or
+	  'regex_matches' => array(
+		  '9.*' //any 9.0 release
+	  ),
+	),
+	'acceptable_sugar_flavors' => array(
+	  'PRO', 
+	  'ENT', 
+	  'ULT'
+	),
+	'readme' => '',
+	'icon' => '',
+	'remove_tables' => '',
+	'uninstall_before_upgrade' => false,
 );
 
 $installdefs = array

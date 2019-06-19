@@ -14,16 +14,16 @@ function job_niver_conta()
 	//$GLOBALS['log']->fatal('Aviso de uma semana Start');
 
 	$sql = "SELECT IFNULL(contacts.id,'') primaryid, DAY(NOW()) as dia, MONTH(NOW()) as mes
-			, DAY(contacts_cstm.lftm_ativaconta_3d_c) as diaC, MONTH(contacts_cstm.lftm_ativaconta_3d_c) as mesC 
+			, DAY(DATE_SUB(lftm_it_niver_conta_c, INTERVAL 3 DAY)) as diaC, MONTH(lftm_it_niver_conta_c) as mesC 
 
 			FROM contacts LEFT JOIN contacts_cstm contacts_cstm ON contacts.id = contacts_cstm.id_c 
 
-			WHERE contacts_cstm.lftm_status_cliente_c = 'Ativo' 
-			AND	contacts_cstm.lftm_ativaconta_3d_c IS NOT NULL 
-			AND contacts_cstm.lftm_ativaconta_3d_c <> '0000-00-00 00:00:00' 
-			AND contacts.deleted=0;";
+			WHERE contacts_cstm.lftm_status_cliente_c = ? 
+			AND	lftm_it_niver_conta_c IS NOT NULL 
+			AND lftm_it_niver_conta_c <> ? 
+			AND contacts.deleted=?;";
 
-	$conn = $GLOBALS['db']->getConnection();
+	$conn = $GLOBALS['db']->getConnection($sql, array('Ativo', '0000-00-00 00:00:00', 0));
 	
 	//$GLOBALS['log']->fatal('Got Connection NIVER');
 	

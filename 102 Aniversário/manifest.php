@@ -7,7 +7,7 @@ $manifest = array
 	'acceptable_sugar_flavors' => array('PRO', 'CORP', 'ENT', 'ULT'),
 	'acceptable_sugar_versions' => array(
 		'exact_matches' => array(),
-		'regex_matches' => array('8\\..*$'),
+		'regex_matches' => array('9|10\\..*$'),
 	),
 	'author' => 'Nectar Consulting',
 	'description' => 'Verifica se aniversario de Cliente',

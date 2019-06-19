@@ -17,17 +17,17 @@ function job_aniversario()
 			
 			FROM contacts_cstm T0 INNER JOIN contacts T1 on T1.id = T0.id_c 
 			
-			WHERE T0.lftm_status_cliente_c = 'Ativo' 
+			WHERE T0.lftm_status_cliente_c = '?' 
 			AND	T1.birthdate IS NOT NULL 
-			AND T1.birthdate <> '0000-00-00 00:00:00' 
-			AND T1.deleted=0;";
+			AND T1.birthdate <> '?' 
+			AND T1.deleted=?;";
 
-	$conn = $GLOBALS['db']->getConnection();
+	$conn = $GLOBALS['db']->getConnection($sql, array('Ativo','0000-00-00 00:00:00',0));
 	
 	//$GLOBALS['log']->fatal('Got Connection NIVER');
 	
 	$stmt = $conn->executeQuery($sql);
-	
+				
 	//$GLOBALS['log']->fatal('Query executed NIVER');
 	
 	while($row = $stmt->fetch())
@@ -51,4 +51,3 @@ function job_aniversario()
     return true;
 
 }
-?>
