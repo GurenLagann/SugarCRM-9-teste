@@ -1,7 +1,7 @@
 <?php
 
 $manifest = array (
-	'key' => 1397052912,
+	'key' => 201900619180255,
 	'name' => 'job_niver_conta',
 	'author' => 'wallace',
 	'version' => '4.0',
@@ -30,7 +30,7 @@ $manifest = array (
 
 $installdefs = array
 (
-	'id' => 'pck_20190528175600',
+	'id' => 'pck_201900619180255',
 	'beans' => array(),
 	'layoutdefs' => array(),
 	'relationships' => array(),
