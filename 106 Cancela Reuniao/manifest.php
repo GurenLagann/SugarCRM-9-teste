@@ -1,26 +1,36 @@
 <?php
 
-$manifest = array
-(
-	'key' => '20180717110517',
+$manifest = array (
+	'key' => 20190621121603,
 	'name' => 'job_cancela_reuniao',
-	'acceptable_sugar_flavors' => array('PRO', 'CORP', 'ENT', 'ULT'),
-	'acceptable_sugar_versions' => array(
-		'exact_matches' => array(),
-		'regex_matches' => array('8\\..*$'),
-	),
-	'author' => 'Nectar Consulting',
-	'description' => 'Expira reunioes que tem fase agendada mas passaram de um mes',
-	'icon' => '',
+	'author' => 'wallace Lifetime TI',
+	'version' => '4.0',
 	'is_uninstallable' => true,
-	'published_date' => '2018-07-17 11:05:17',
+	'published_date' => '21/06/2019 121603',
 	'type' => 'module',
-	'version' => '4.2',
+	'acceptable_sugar_versions' => array(
+	  'exact_matches' => array(
+		  '9.0.0'
+	  ),
+	  //or
+	  'regex_matches' => array(
+		  '9.*' //any 9.0 release
+	  ),
+	),
+	'acceptable_sugar_flavors' => array(
+	  'PRO', 
+	  'ENT', 
+	  'ULT'
+	),
+	'readme' => '',
+	'icon' => '',
+	'remove_tables' => '',
+	'uninstall_before_upgrade' => false,
 );
 
 $installdefs = array
 (
-	'id' => 'pck_20180717110517',
+	'id' => 'pck_20190621121603',
 	'beans' => array(),
 	'layoutdefs' => array(),
 	'relationships' => array(),
