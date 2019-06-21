@@ -52,4 +52,3 @@ function job_niver_conta()
     return true;
 
 }
-?>

@@ -18,11 +18,11 @@ function job_cancela_chamada()
 
 			FROM calls 
 
-			WHERE status = 'Planned' 
+			WHERE status = ?
 			AND NOW() > DATE_ADD(date_start, INTERVAL 30 DAY) 
 			AND calls.deleted=0;";
 
-	$conn = $GLOBALS['db']->getConnection();
+	$conn = $GLOBALS['db']->getConnection($sql, array('Planned'));
 	
 	//$GLOBALS['log']->fatal('Got Connection');
 	
@@ -52,5 +52,3 @@ function job_cancela_chamada()
     return true;
 
 }
-
-?>

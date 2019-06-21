@@ -52,4 +52,3 @@ function job_aviso_semana() {
     return true;
 
 }
-?>
