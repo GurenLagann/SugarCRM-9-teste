@@ -16,15 +16,15 @@ function job_expira_agendado() {
 
 			FROM contacts LEFT JOIN contacts_cstm contacts_cstm ON contacts.id = contacts_cstm.id_c 
 
-			WHERE contacts_cstm.lftm_segmentacao_cliente_c NOT IN ('Online') 
-			AND contacts_cstm.lftm_status_cliente_c = 'Ativo' 
-			AND contacts_cstm.lftm_fases_acompanhamento_c = 'Agendada' 
-			AND contacts_cstm.lftm_agendamento_acomp_c <> '0000-00-00 00:00:00' 
+			WHERE contacts_cstm.lftm_segmentacao_cliente_c NOT IN (?) 
+			AND contacts_cstm.lftm_status_cliente_c = ? 
+			AND contacts_cstm.lftm_fases_acompanhamento_c = ? 
+			AND contacts_cstm.lftm_agendamento_acomp_c <> ? 
 			AND contacts_cstm.lftm_agendamento_acomp_c IS NOT NULL 
 			AND NOW() >= contacts_cstm.lftm_agendamento_acomp_c 
-			AND contacts.deleted=0;";
+			AND contacts.deleted=?;";
 
-	$conn = $GLOBALS['db']->getConnection();
+	$conn = $GLOBALS['db']->getConnection($sql, array('Online', 'Ativo', 'Agendada', '0000-00-00 00:00:00', 0));
 	
 	//$GLOBALS['log']->fatal('Got Connection');
 	
@@ -49,5 +49,4 @@ function job_expira_agendado() {
 	//$GLOBALS['log']->fatal('All Contacts Saved');
     return true;
 
-}
-?>
+};
