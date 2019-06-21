@@ -18,11 +18,11 @@ function job_cancela_reuniao()
 
 			FROM meetings 
 			
-			WHERE status = 'Planned' 
+			WHERE status = ? 
 			AND	NOW() > DATE_ADD(date_start, INTERVAL 30 DAY) 
 			AND meetings.deleted=0;";
 
-	$conn = $GLOBALS['db']->getConnection();
+	$conn = $GLOBALS['db']->getConnection($sql, array('Planned'));
 	
 	//$GLOBALS['log']->fatal('Got Connection');
 	
@@ -54,4 +54,3 @@ function job_cancela_reuniao()
     return true;
 
 }
-?>
