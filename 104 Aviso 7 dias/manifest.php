@@ -1,26 +1,35 @@
 <?php
-
-$manifest = array
-(
-	'key' => '20180525153623',
+$manifest = array (
+	'key' => 20190621093405,
 	'name' => 'job_aviso_semana',
-	'acceptable_sugar_flavors' => array('PRO', 'CORP', 'ENT', 'ULT'),
-	'acceptable_sugar_versions' => array(
-		'exact_matches' => array(),
-		'regex_matches' => array('8\\..*$'),
-	),
-	'author' => 'Nectar Consulting',
-	'description' => 'Seta envio de alerta de uma semana',
-	'icon' => '',
+	'author' => 'wallace',
+	'version' => '4.0',
 	'is_uninstallable' => true,
-	'published_date' => '2018-05-25 15:36:23',
+	'published_date' => '21/06/2019 09:34:05',
 	'type' => 'module',
-	'version' => '4.1',
+	'acceptable_sugar_versions' => array(
+	  'exact_matches' => array(
+		  '9.0.0'
+	  ),
+	  //or
+	  'regex_matches' => array(
+		  '9.*' //any 9.0 release
+	  ),
+	),
+	'acceptable_sugar_flavors' => array(
+	  'PRO', 
+	  'ENT', 
+	  'ULT'
+	),
+	'readme' => '',
+	'icon' => '',
+	'remove_tables' => '',
+	'uninstall_before_upgrade' => false,
 );
 
 $installdefs = array
 (
-	'id' => 'pck_20180525153623',
+	'id' => 'pck_20190621093405',
 	'beans' => array(),
 	'layoutdefs' => array(),
 	'relationships' => array(),

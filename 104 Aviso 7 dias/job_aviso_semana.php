@@ -16,17 +16,17 @@ function job_aviso_semana() {
 
 			FROM contacts LEFT JOIN contacts_cstm contacts_cstm ON contacts.id = contacts_cstm.id_c 
 
-			WHERE contacts_cstm.lftm_segmentacao_cliente_c NOT IN ('Online') 
-			AND contacts_cstm.lftm_status_cliente_c = 'Ativo' 
-			AND contacts_cstm.lftm_fases_acompanhamento_c NOT IN ('Agendada') 
-			AND contacts_cstm.alerta_enviado_c = 0 
-			AND contacts_cstm.enviar_alerta_c = 0 
-			AND contacts_cstm.lftm_aux_prevacomp_menos7_c <> '0000-00-00 00:00:00' 
+			WHERE contacts_cstm.lftm_segmentacao_cliente_c NOT IN (?) 
+			AND contacts_cstm.lftm_status_cliente_c = ? 
+			AND contacts_cstm.lftm_fases_acompanhamento_c NOT IN (?) 
+			AND contacts_cstm.alerta_enviado_c = ? 
+			AND contacts_cstm.enviar_alerta_c = ? 
+			AND contacts_cstm.lftm_aux_prevacomp_menos7_c <> ? 
 			AND contacts_cstm.lftm_aux_prevacomp_menos7_c IS NOT NULL 
 			AND NOW() >= contacts_cstm.lftm_aux_prevacomp_menos7_c
-			AND contacts.deleted=0;";
+			AND contacts.deleted=?;";
 
-	$conn = $GLOBALS['db']->getConnection();
+	$conn = $GLOBALS['db']->getConnection($sql, array('Online', 'Ativo', 'Agendada', 0, 0, '0000-00-00 00:00:00', 0));
 	
 	//$GLOBALS['log']->fatal('Got Connection');
 	
