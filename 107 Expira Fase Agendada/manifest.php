@@ -1,21 +1,31 @@
 <?php
 
-$manifest = array
-(
-	'key' => '20180620100717',
+$manifest = array (
+	'key' => 20190621235030,
 	'name' => 'job_expira_agendado',
-	'acceptable_sugar_flavors' => array('PRO', 'CORP', 'ENT', 'ULT'),
-	'acceptable_sugar_versions' => array(
-		'exact_matches' => array(),
-		'regex_matches' => array('8\\..*$'),
-	),
-	'author' => 'Nectar Consulting',
-	'description' => 'Expira acompanhamentos que tem fase agendada mas passaram da data',
-	'icon' => '',
+	'author' => 'wallace',
+	'version' => '4.0',
 	'is_uninstallable' => true,
-	'published_date' => '2018-06-20 10:07:17',
+	'published_date' => '21/06/2019 23:50:30',
 	'type' => 'module',
-	'version' => '4.1',
+	'acceptable_sugar_versions' => array(
+	  'exact_matches' => array(
+		  '9.0.0'
+	  ),
+	  //or
+	  'regex_matches' => array(
+		  '9.*' //any 9.0 release
+	  ),
+	),
+	'acceptable_sugar_flavors' => array(
+	  'PRO', 
+	  'ENT', 
+	  'ULT'
+	),
+	'readme' => '',
+	'icon' => '',
+	'remove_tables' => '',
+	'uninstall_before_upgrade' => false,
 );
 
 $installdefs = array
