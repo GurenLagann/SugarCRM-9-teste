@@ -79,4 +79,3 @@ function dias_saldo_positivo()
 	$GLOBALS['log']->fatal('All Contacts Saved');
     return true;
 }
-?>
