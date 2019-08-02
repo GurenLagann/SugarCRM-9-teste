@@ -1,27 +1,36 @@
 <?php
 
-$manifest = array
-(
-	'key' => '20180806105017',
+$manifest = array(
+	'key' => 20190708174321,
 	'name' => 'before_save_contacts',
-	'acceptable_sugar_flavors' => array('PRO', 'CORP', 'ENT', 'ULT'),
-	'acceptable_sugar_versions' => array
-	(
-		'exact_matches' => array(),
-		'regex_matches' => array('8\\..*$'),
-	),
-	'author' => 'Marcel',
-	'description' => 'Before save em contatos',
-	'icon' => '',
+	'author' => 'wallace',
+	'version' => '4.3',
 	'is_uninstallable' => true,
-	'published_date' => '2018-08-06 10:50:17',
+	'published_date' => '08/07/2019 17:43:21',
 	'type' => 'module',
-	'version' => '4.2',
+	'acceptable_sugar_versions' => array(
+		'exact_matches' => array(
+			'9.0.0'
+		),
+		//or
+		'regex_matches' => array(
+			'9.*' //any 9.0 release
+		),
+	),
+	'acceptable_sugar_flavors' => array(
+		'PRO',
+		'ENT',
+		'ULT'
+	),
+	'readme' => '',
+	'icon' => '',
+	'remove_tables' => '',
+	'uninstall_before_upgrade' => false,
 );
 
 $installdefs = array
 (
-	'id' => 'pck_20180806105017',
+	'id' => 'pck_20190708174321',
 	'beans' => array(),
 	'layoutdefs' => array(),
 	'relationships' => array(),

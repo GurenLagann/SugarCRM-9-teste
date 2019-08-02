@@ -1,27 +1,36 @@
 <?php
 
-$manifest = array
-(
-	'key' => '20180803101917',
+$manifest = array(
+	'key' => 20190708130240,
 	'name' => 'dias_saldo_positivo',
-	'acceptable_sugar_flavors' => array('PRO', 'CORP', 'ENT', 'ULT'),
-	'acceptable_sugar_versions' => array
-	(
-		'exact_matches' => array(),
-		'regex_matches' => array('8\\..*$'),
-	),
-	'author' => 'Marcel',
-	'description' => 'Contador de dias com saldo positivo',
-	'icon' => '',
+	'author' => 'wallace',
+	'version' => '4.0',
 	'is_uninstallable' => true,
-	'published_date' => '2018-08-03 10:19:17',
+	'published_date' => '08/07/2019 13:02:40',
 	'type' => 'module',
-	'version' => '1.5',
+	'acceptable_sugar_versions' => array(
+		'exact_matches' => array(
+			'9.0.0'
+		),
+		//or
+		'regex_matches' => array(
+			'9.*' //any 9.0 release
+		),
+	),
+	'acceptable_sugar_flavors' => array(
+		'PRO',
+		'ENT',
+		'ULT'
+	),
+	'readme' => '',
+	'icon' => '',
+	'remove_tables' => '',
+	'uninstall_before_upgrade' => false,
 );
 
 $installdefs = array
 (
-	'id' => 'pck_20180803101917',
+	'id' => 'pck_20190708130240',
 	'beans' => array(),
 	'layoutdefs' => array(),
 	'relationships' => array(),
