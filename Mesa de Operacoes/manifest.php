@@ -2,10 +2,9 @@
 
 $dt = new DateTime();
 
-$manifest = array
-(
-	'key' => 20190208130121,
-	'name' => 'job_relacionamento_tier',
+$manifest = array(
+	'key' => 20190508130121,
+	'name' => 'Mesa_Ops_rel_Tier',
 	'author' => 'Giovanni',
 	'version' => '1.0',
 	'is_uninstallable' => true,
@@ -24,29 +23,19 @@ $manifest = array
 	'readme' => 'Expira relacionamentos fora do prazo'
 );
 
-$installdefs['copy'] = array
-(
-	'id' => 'pck_20190208130121',
-	'beans' => array(),
-	'layoutdefs' => array(),
-	'relationships' => array(),
-	'scheduledefs' => array
-	(
-		array
-		(
+$installdefs = array(
+	'id' => 'pck_20190508130121',
+	'copy' => array(
+		0 => array(
 			'from' => '<basepath>/job_relacionamento_tier.php',
-			'to' => 'custom/Extension/modules/Schedulers/Ext/ScheduledTasks/job_relacionamento_tier.php'
+			'to' => 'custom/Extension/modules/Schedulers/Ext/ScheduledTasks/job_relacionamento_tier.php',
 		),
-
-		'language' => array
-		(
+		1 => array(
 			'from' => '<basepath>/pt_BR.job_relacionamento_tier.php',
 			'to' => 'custom/Extension/modules/Schedulers/Ext/Language/pt_BR.job_relacionamento_tier.php',
 		)
 	),
-
-	'post_execute' => array
-	(
+	'post_execute' => array(
 		'<basepath>/post_install_actions.php'
 	)
 );

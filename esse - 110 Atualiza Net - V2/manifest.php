@@ -1,46 +1,33 @@
 <?php
 
-$manifest = array
-(
-	'key' => '20180824092217',
+$dt = new DateTime();
+$manifest = array(
+	'key' => 20190807092217,
 	'name' => 'lftm_it_atualiza_net',
-	'acceptable_sugar_flavors' => array('PRO', 'CORP', 'ENT', 'ULT'),
-	'acceptable_sugar_versions' => array(
-		'exact_matches' => array(),
-		'regex_matches' => array('8\\..*$'),
-	),
+	'acceptable_sugar_flavors' => array('PRO', 'ENT', 'ULT'),
+	'acceptable_sugar_versions' => array('regex_matches' => array('9.*', '10.*')),
 	'author' => 'Lifetime TI',
 	'description' => 'Atualiza o NET e o perfil',
 	'icon' => '',
 	'is_uninstallable' => true,
-	'published_date' => '2018-08-24 09:22:17',
+	'published_date' => $dt->format('Y-m-d H:i:s'),
 	'type' => 'module',
-	'version' => '5.0',
+	'version' => '5.1',
 );
 
-$installdefs = array
-(
-	'id' => 'pck_20180824092217',
-	'beans' => array(),
-	'layoutdefs' => array(),
-	'relationships' => array(),
-	'copy' => array
-	(
-		0 => array
-		(
+$installdefs = array(
+	'id' => 'pck_20190807092217',
+	'copy' => array(
+		0 => array(
 			'from' => '<basepath>/lftm_it_atualiza_net.php',
 			'to' => 'custom/Extension/modules/Schedulers/Ext/ScheduledTasks/lftm_it_atualiza_net.php',
 		),
-
-		1 => array
-		(
+		1 => array(
 			'from' => '<basepath>/pt_BR.lftm_it_atualiza_net.php',
 			'to' => 'custom/Extension/modules/Schedulers/Ext/Language/pt_BR.lftm_it_atualiza_net.php',
 		)
 	),
-
-	'post_execute' => array
-	(
+	'post_execute' => array(
 		'<basepath>/post_install_actions.php'
 	)
 );
