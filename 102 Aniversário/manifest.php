@@ -2,7 +2,7 @@
 
 $manifest = array
 (
-	'key' => '20180614161437',
+	'key' => '20190910175810',
 	'name' => 'job_aniversario',
 	'acceptable_sugar_flavors' => array('PRO', 'CORP', 'ENT', 'ULT'),
 	'acceptable_sugar_versions' => array(
@@ -18,14 +18,9 @@ $manifest = array
 	'version' => '4.0',
 );
 
-$installdefs = array
-(
-	'id' => 'pck_20180614161437',
-	'beans' => array(),
-	'layoutdefs' => array(),
-	'relationships' => array(),
-	'copy' => array
-	(
+$installdefs = array(
+	'id' => 'pck_20190910175810',
+	'copy' => array(
 		0 => array
 		(
 			'from' => '<basepath>/job_aniversario.php',
@@ -38,9 +33,10 @@ $installdefs = array
 			'to' => 'custom/Extension/modules/Schedulers/Ext/Language/pt_BR.job_aniversario.php',
 		)
 	),
-
-	'post_execute' => array
-	(
+	'post_execute' => array(
 		'<basepath>/post_install_actions.php'
 	)
 );
+
+
+
