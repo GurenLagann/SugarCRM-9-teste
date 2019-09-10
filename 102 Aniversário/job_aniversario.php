@@ -11,18 +11,11 @@ array_push($job_strings, 'job_aniversario');
 function job_aniversario() 
 {
 	
-	//$GLOBALS['log']->fatal('Aviso de uma semana Start');
+	$GLOBALS['log']->fatal('Aniversario Cliente Start');
 
-	$sql = "SELECT T0.id_c, DAY(NOW()) as dia, MONTH(NOW()) as mes, DAY(T1.birthdate) as diaC, MONTH(T1.birthdate) as mesC 
-			
-			FROM contacts_cstm T0 INNER JOIN contacts T1 on T1.id = T0.id_c 
-			
-			WHERE T0.lftm_status_cliente_c = '?' 
-			AND	T1.birthdate IS NOT NULL 
-			AND T1.birthdate <> '?' 
-			AND T1.deleted=?;";
+	$sql = "SELECT T0.id_c as primaryid, DAY(DATE_ADD(NOW(), INTERVAL 2 DAY)) as dia, MONTH(DATE_ADD(NOW(), INTERVAL 2 DAY)) as mes, DAY(T1.birthdate) as diaC, MONTH(T1.birthdate) as mesC FROM contacts_cstm T0 INNER JOIN contacts T1 on T1.id = T0.id_c WHERE T0.lftm_status_cliente_c = 'Ativo' AND T1.birthdate IS NOT NULL AND T1.deleted=0 HAVING diaC = dia AND mesC = mes;";
 
-	$conn = $GLOBALS['db']->getConnection($sql, array('Ativo','0000-00-00 00:00:00',0));
+	$conn = $GLOBALS['db']->getConnection($sql);
 	
 	//$GLOBALS['log']->fatal('Got Connection NIVER');
 	
@@ -30,12 +23,9 @@ function job_aniversario()
 				
 	//$GLOBALS['log']->fatal('Query executed NIVER');
 	
-	while($row = $stmt->fetch())
-	{	
-		
-		if ($row['diaC'] == $row['dia'] AND $row['mesC'] == $row['mes'])
-		{
-			$contact_bean = BeanFactory::retrieveBean('Contacts', $row['id_c'], array('disable_row_level_security' => true));
+	while($row = $stmt->fetch()) {
+
+			$contact_bean = BeanFactory::retrieveBean('Contacts', $row['primaryid'], array('disable_row_level_security' => true));
 			
 			$contact_bean->lftm_niver_c = 1;
 
@@ -44,10 +34,10 @@ function job_aniversario()
 			$contact_bean->save();
 			
 			//$GLOBALS['log']->fatal('Processing Contact: ' . $contact_bean->full_name);
-		}
+		
 	}
 	
-	//$GLOBALS['log']->fatal('All Contacts Saved NIVER');
+	$GLOBALS['log']->fatal('Aniversario Cliente End');
     return true;
 
 }

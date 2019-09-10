@@ -11,9 +11,9 @@
     function lftm_it_atualiza_net() {
         
 			$sql = "SELECT 
-				T1.id as id_contact, T4.lftm_net_c as net_pos  
+				T1.id as id_contact, T4.lftm_net_c as net_pos, T4.lftm_data_posicao_c as dataPos   
 			FROM 
-				(SELECT C3.id, MAX(C1.lftm_data_posicao_c) as max_date, T4.lftm_data_posicao_c as dataPos  
+				(SELECT C3.id, MAX(C1.lftm_data_posicao_c) as max_date  
 					FROM pcp01_posconsprincipal_cstm C1 
 					INNER JOIN pcp01_posconsprincipal_contacts_c C2 ON C1.id_c = C2.pcp01_posconsprincipal_contactspcp01_posconsprincipal_idb 
 					INNER JOIN contacts C3 ON C3.id = C2.pcp01_posconsprincipal_contactscontacts_ida 

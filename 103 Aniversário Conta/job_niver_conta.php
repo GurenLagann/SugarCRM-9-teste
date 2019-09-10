@@ -8,47 +8,27 @@ use Sugarcrm\Sugarcrm\ProcessManager\Registry as RegistryNiverConta;
 
 array_push($job_strings, 'job_niver_conta');
 
-function job_niver_conta() 
-{
+function job_niver_conta(){
 	
-	//$GLOBALS['log']->fatal('Aviso de uma semana Start');
+	$GLOBALS['log']->fatal('Aniversario de Conta - Start');
 
-	$sql = "SELECT IFNULL(contacts.id,'') primaryid, DAY(NOW()) as dia, MONTH(NOW()) as mes
-			, DAY(DATE_SUB(lftm_it_niver_conta_c, INTERVAL 3 DAY)) as diaC, MONTH(lftm_it_niver_conta_c) as mesC 
+	$sql = "SELECT T0.id_c AS primaryid, 
+	DAY(DATE_ADD(NOW(), INTERVAL 2 DAY)) as dia, MONTH(DATE_ADD(NOW(), INTERVAL 2 DAY)) as mes, 
+	DAY(T1.lftm_it_niver_conta_c) as diaC, MONTH(T1.lftm_it_niver_conta_c) as mesC 
+	FROM contacts_cstm T0 INNER JOIN contacts T1 on T1.id = T0.id_c 
+	WHERE T0.lftm_status_cliente_c = 'Ativo' AND T1.lftm_it_niver_conta_c IS NOT NULL AND T1.deleted=0 
+	HAVING diaC = dia AND mesC = mes;";
 
-			FROM contacts LEFT JOIN contacts_cstm contacts_cstm ON contacts.id = contacts_cstm.id_c 
-
-			WHERE contacts_cstm.lftm_status_cliente_c = ? 
-			AND	lftm_it_niver_conta_c IS NOT NULL 
-			AND lftm_it_niver_conta_c <> ? 
-			AND contacts.deleted=?;";
-
-	$conn = $GLOBALS['db']->getConnection($sql, array('Ativo', '0000-00-00 00:00:00', 0));
-	
-	//$GLOBALS['log']->fatal('Got Connection NIVER');
-	
+	$conn = $GLOBALS['db']->getConnection();
 	$stmt = $conn->executeQuery($sql);
-	
-	//$GLOBALS['log']->fatal('Query executed NIVER');
-	
-	while($row = $stmt->fetch())
-	{	
-		
-		if ($row['diaC'] == $row['dia'] AND $row['mesC'] == $row['mes'])
-		{
-			$contact_bean = BeanFactory::retrieveBean('Contacts', $row['primaryid'], array('disable_row_level_security' => true));
-			
-			$contact_bean->lftm_niver_conta_c = 1;
+	while($row = $stmt->fetch()){
 
+			$contact_bean = BeanFactory::retrieveBean('Contacts', $row['primaryid'], array('disable_row_level_security' => true));	
+			$contact_bean->lftm_niver_conta_c = 1;
 			//Usado para o agendador repetir para todos os registros e não apenas 1
 			RegistryNiverConta\Registry::getInstance()->drop('triggered_starts');
 			$contact_bean->save();
-			
-			//$GLOBALS['log']->fatal('Processing Contact: ' . $contact_bean->full_name);
-		}
 	}
-	
-	//$GLOBALS['log']->fatal('All Contacts Saved NIVER');
-    return true;
-
+	$GLOBALS['log']->fatal('Aniversario de Conta - End');
+	return true;
 }

@@ -17,11 +17,11 @@ function lftm_it_data_ativacao_job() {
 	$cnt = 0;
 	$conn = $GLOBALS['db']->getConnection();
 	
-//	$GLOBALS['log']->fatal('Got Connection');
+	//$GLOBALS['log']->fatal('Got Connection');
 	
 	$stmt = $conn->executeQuery($sql);
 	
-//	$GLOBALS['log']->fatal('Query executed');
+	//$GLOBALS['log']->fatal('Query executed');
 	
 	while($row = $stmt->fetch()) {	
 	
@@ -29,10 +29,10 @@ function lftm_it_data_ativacao_job() {
 		$conn->executeQuery($sql);
 		
 		$cnt++;
-//		$GLOBALS['log']->fatal(''. $cnt .' Registers Saved');
+		//$GLOBALS['log']->fatal(''. $cnt .' Registers Saved');
 	}
 	
-//	$GLOBALS['log']->fatal('All Registers Saved');
-    return true;
+	//$GLOBALS['log']->fatal('All Registers Saved');
+  return true;
 
 }

@@ -3,10 +3,10 @@
 $dt = new DateTime();
 
 $manifest = array(
-	'key' => 20190508130121,
+	'key' => 20191208115721,
 	'name' => 'Mesa_Ops_rel_Tier',
 	'author' => 'Giovanni',
-	'version' => '1.0',
+	'version' => '1.2',
 	'is_uninstallable' => true,
 	'published_date' => $dt->format('Y-m-d H:i:s'),
 	'type' => 'module',
@@ -24,7 +24,7 @@ $manifest = array(
 );
 
 $installdefs = array(
-	'id' => 'pck_20190508130121',
+	'id' => 'pck_20191208115721',
 	'copy' => array(
 		0 => array(
 			'from' => '<basepath>/job_relacionamento_tier.php',
