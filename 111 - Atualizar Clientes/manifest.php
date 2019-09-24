@@ -2,12 +2,12 @@
 
 $dt = new DateTime();
 $manifest = array(
-	'key' => 2019091074505,
+	'key' => 20190924101553,
 	'name' => 'atualizacao_clientes',
 	'acceptable_sugar_flavors' => array('PRO', 'ENT', 'ULT'),
 	'acceptable_sugar_versions' => array('regex_matches' => array('9.*', '10.*')),
 	'author' => 'Lifetime TI',
-	'description' => 'Aniversario da Conta',
+	'description' => 'Atualizar Clientes Diariamente',
 	'icon' => '',
 	'is_uninstallable' => true,
 	'published_date' => $dt->format('Y-m-d H:i:s'),
@@ -17,7 +17,7 @@ $manifest = array(
 
 $installdefs = array(
 
-	'id' => 'pck_2019091074505',
+	'id' => 'pck_20190924101553',
 	'copy' => array(
 		0 => 
 			array(
