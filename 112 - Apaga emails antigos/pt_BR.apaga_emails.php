@@ -1,0 +1,3 @@
+<?php
+
+$mod_strings['LBL_APAGA_EMAILS'] = 'APAGA EMAILS ANTIGOS DO SISTEMA';
