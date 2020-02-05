@@ -29,8 +29,15 @@
 				AND T5.deleted = 0 
 				AND NOT (T2.lftm_net_c = T4.lftm_net_c) 
 			LIMIT 50";
+			//-----------------------------------------------------------------------------------------------------------------------
+			//-------------------VARIAVEIS DE DEBUG----------------------------------------------------------------------------------
+
+			$contador = 0;
 
 
+			
+
+			//-----------------------------------------------------------------------------------------------------------------------
 			$conn = $GLOBALS['db']->getConnection();
 			$count = 0;
 			$stmt = $conn->executeQuery($sql);
@@ -39,7 +46,10 @@
 		
 			while ($row = $stmt->fetch()) {
 
-				
+				//-----------------------DEBUG---------------------------------------
+				$contador ++;
+				$GLOBALS['log']->fatal("[DEBUG] Foram atualizados : ".$contador." registros.\n");
+				//-------------------------------------------------------------------
 				$count = $count + 1;
 				$contact_bean = BeanFactory::retrieveBean('Contacts', $row['id_contact'], array('disable_row_level_security' => true));
 				$seg_old = $contact_bean->lftm_segmentacao_cliente_c;
@@ -48,6 +58,7 @@
 					$dataEvade = new DateTime($row['dataPos']);
 					$contact_bean->lftm_evasao_c = $dataEvade->format('Y-m-d H:i:s');
 					$contact_bean->lftm_status_cliente_c = 'Inativo';
+					
 					if ($seg_old != 'Online' && $seg_old != 'Plus' && $seg_old != 'Unique' && $seg_old != 'Private') {
 						$contact_bean->lftm_segmentacao_cliente_c = 'Online';
 					}
@@ -78,6 +89,16 @@
 				}
 
 				$contact_bean->lftm_net_c = $row['net_pos'];
+
+
+				//-----------------------DEBUG---------------------------------------
+				$aux1 = $contact_bean->lftm_segmentacao_cliente_c;
+				$aux2 = $contact_bean->lftm_net_c;
+				$cliente = $contact_bean->id;
+				$GLOBALS['log']->fatal("[DEBUG] O cliente ".$cliente." foi atualizado para a segmentação : ".$aux1." com o NET de ".$aux2."\n");
+				
+				//-------------------------------------------------------------------
+				
 				//Usado para o agendador repetir para todos os registros e não apenas 1
 				RegistryNET\Registry::getInstance()->drop('triggered_starts');
 				$contact_bean->save();                
